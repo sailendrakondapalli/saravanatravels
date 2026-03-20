@@ -10,6 +10,7 @@ import GoaPackages from './pages/GoaPackages'
 import InternationalPackages from './pages/InternationalPackages'
 import SignatureExperiences from './pages/SignatureExperiences'
 import Contact from './pages/Contact'
+import TemplePackages from './pages/TemplePackages'
 
 export default function App() {
   const [introDone, setIntroDone] = useState(false)
@@ -21,6 +22,7 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/temple" element={<TemplePackages />} />
           <Route path="/kerala" element={<KeralaPackages />} />
           <Route path="/goa" element={<GoaPackages />} />
           <Route path="/international" element={<InternationalPackages />} />

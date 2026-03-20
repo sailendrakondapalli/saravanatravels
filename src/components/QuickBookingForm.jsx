@@ -33,12 +33,12 @@ export default function QuickBookingForm() {
   }
 
   return (
-    <section className="bg-gradient-to-br from-blue-700 to-blue-900 py-14">
+    <section className="py-14" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='40' viewBox='0 0 80 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20 L10 5 L20 20 L10 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3Cpath d='M40 20 L70 5 L60 20 L70 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E"), linear-gradient(rgba(10,5,30,0.92), rgba(10,5,30,0.92)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`, backgroundSize: '80px 40px, cover, cover', backgroundPosition: 'center, center, center top' }}>
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-8">
-          <p className="text-blue-300 text-sm font-semibold uppercase tracking-widest">Quick Booking</p>
+          <p className="text-orange-400 text-sm font-semibold uppercase tracking-widest">Quick Booking</p>
           <h2 className="text-3xl font-extrabold text-white mt-1">Plan Your Trip Now</h2>
-          <p className="text-blue-200 mt-2 text-sm">Fill the form and we'll reach you instantly on WhatsApp</p>
+          <p className="text-gray-400 mt-2 text-sm">Fill the form and we'll reach you instantly on WhatsApp</p>
         </div>
 
         {sent ? (
