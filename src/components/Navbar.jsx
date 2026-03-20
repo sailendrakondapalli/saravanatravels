@@ -59,6 +59,12 @@ export default function Navbar() {
             >
               📱 WhatsApp
             </a>
+            <a
+              href="tel:+918838691200"
+              className="ml-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            >
+              📞 Call Us
+            </a>
           </div>
 
           <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-lg text-gray-700 text-xl">
@@ -91,6 +97,12 @@ export default function Navbar() {
               className="bg-green-500 text-white px-3 py-2 rounded-lg text-sm font-medium text-center"
             >
               📱 WhatsApp Us
+            </a>
+            <a
+              href="tel:+918838691200"
+              className="bg-blue-600 text-white px-3 py-2 rounded-lg text-sm font-medium text-center"
+            >
+              📞 Call Us
             </a>
           </div>
         )}

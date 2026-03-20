@@ -40,7 +40,7 @@ export default function TempleMarquee() {
       <div
         style={{
           display: 'flex',
-          animation: 'marqueeScroll 35s linear infinite',
+          animation: 'marqueeScroll 18s linear infinite',
           whiteSpace: 'nowrap',
         }}
         onMouseEnter={e => e.currentTarget.style.animationPlayState = 'paused'}

@@ -9,11 +9,11 @@ const WINGS_PATTERN = `url("data:image/svg+xml,%3Csvg width='80' height='40' vie
 
 const categories = [
   { label: 'Temple Packages', icon: '🛕', to: '/temple', img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=400&q=80', priority: true },
-  { label: 'Kerala Packages', icon: '🌴', to: '/kerala', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&q=80' },
-  { label: 'Honeymoon Packages', icon: '💑', to: '/kerala', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80' },
   { label: 'Family Packages', icon: '👨‍👩‍👧‍👦', to: '/kerala', img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80' },
+  { label: 'Honeymoon Packages', icon: '💑', to: '/kerala', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80' },
   { label: 'Goa Packages', icon: '🏖️', to: '/goa', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&q=80' },
   { label: 'International Packages', icon: '🌍', to: '/international', img: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=400&q=80' },
+  { label: 'Kerala Packages', icon: '🌴', to: '/kerala', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&q=80' },
 ]
 
 const testimonials = [
@@ -102,6 +102,45 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* YouTube Customer Reviews */}
+      <section
+        className="py-16"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='40' viewBox='0 0 80 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20 L10 5 L20 20 L10 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3Cpath d='M40 20 L70 5 L60 20 L70 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E")`, backgroundColor: '#0f172a', backgroundSize: '80px 40px' }}
+      >
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">⭐ Real Experiences</p>
+            <h2 className="text-3xl font-bold text-white mt-1">Happy Clients — Their Stories</h2>
+            <p className="text-gray-400 mt-2 text-sm">Watch what our satisfied travelers say about us</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+            {[
+              { url: 'https://www.youtube.com/embed/C81lBKIVtVQ', title: 'Customer Review 1' },
+              { url: 'https://www.youtube.com/embed/a9E1YvR7B8s', title: 'Customer Review 2' },
+            ].map((v, i) => (
+              <div
+                key={i}
+                className="w-full max-w-xs rounded-2xl overflow-hidden shadow-2xl"
+                style={{ border: '1px solid rgba(251,146,60,0.3)', background: 'rgba(255,255,255,0.04)' }}
+              >
+                <div style={{ position: 'relative', paddingBottom: '177.78%', height: 0 }}>
+                  <iframe
+                    src={v.url}
+                    title={v.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                  />
+                </div>
+                <div className="p-3 text-center">
+                  <p className="text-orange-300 text-sm font-semibold">⭐⭐⭐⭐⭐ Verified Traveler</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>

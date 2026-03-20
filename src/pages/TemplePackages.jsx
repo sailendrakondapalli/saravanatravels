@@ -159,7 +159,7 @@ export default function TemplePackages() {
               <div
                 key={pkg.name}
                 className="rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(251,146,60,0.3)', backdropFilter: 'blur(8px)' }}
+                style={{ background: 'rgba(120,53,15,0.25)', border: '1px solid rgba(251,146,60,0.4)', backdropFilter: 'blur(8px)' }}
               >
                 <div className="relative">
                   <img src={pkg.img} alt={pkg.name} className="w-full h-48 object-cover" />
@@ -205,7 +205,7 @@ export default function TemplePackages() {
                 <div
                   key={i}
                   className="rounded-2xl overflow-hidden flex flex-col sm:flex-row hover:shadow-xl transition-all"
-                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(251,146,60,0.3)' }}
+                  style={{ background: 'rgba(120,53,15,0.25)', border: '1px solid rgba(251,146,60,0.4)' }}
                 >
                   <img src={pkg.img} alt={pkg.route} className="w-full sm:w-40 h-40 object-cover" />
                   <div className="p-4 flex flex-col justify-between">

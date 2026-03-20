@@ -59,6 +59,28 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      {/* Google Maps */}
+      <div className="border-t border-gray-800 px-4 py-8">
+        <h3 className="text-white font-semibold mb-4 text-center">📍 Find Us</h3>
+        <div className="rounded-2xl overflow-hidden max-w-4xl mx-auto" style={{ height: 280 }}>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.265!2d76.9558!3d11.0168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDAxJzAwLjUiTiA3NsKwNTcnMjAuOSJF!5e0!3m2!1sen!2sin!4v1234567890"
+            width="100%"
+            height="280"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Saravana Travels Location"
+          />
+        </div>
+        <p className="text-center text-gray-500 text-xs mt-3">
+          <a href="https://share.google/z3ZdxE0pc1GsM1LPq" target="_blank" rel="noreferrer" className="text-orange-400 hover:text-orange-300 transition-colors">
+            📍 Open in Google Maps →
+          </a>
+        </p>
+      </div>
+
       <div className="border-t border-gray-800 text-center py-4 text-xs text-gray-500">
         © {new Date().getFullYear()} Saravana Travels, Coimbatore. All rights reserved.
       </div>
