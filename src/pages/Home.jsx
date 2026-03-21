@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { waBooking } from '../utils/whatsapp'
 
 // Yale blue replaces all plain blue
@@ -29,18 +29,28 @@ const testimonials = [
 
 export default function Home() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
+  const [width, setWidth] = useState(window.innerWidth)
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  }, [])
+  const isDesktop = width >= 768
   return (
-    <div className="pt-24">
+    <div className="pt-0">
       {/* Hero — Shiva bg */}
-      <section
-        className="relative min-h-screen flex items-center justify-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,40,0.45), rgba(0,0,40,0.45)), url('/siva.png')`,
-          backgroundSize: 'cover',
-          backgroundPosition: '50% -100px',
-        }}
-      >
-        <div className="text-center text-white px-4 max-w-4xl mx-auto">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0">
+          <img
+            src="/siva.png"
+            alt="bg"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: isDesktop ? '50% 0%' : 'center top' }}
+          />
+          <div className="absolute inset-0" style={{ background: isDesktop ? 'rgba(0,0,30,0.35)' : 'rgba(0,0,30,0.50)' }}></div>
+        </div>
+        <div className="text-center text-white px-4 max-w-4xl mx-auto relative z-10">
           <p className="text-orange-300 font-medium mb-2 tracking-widest text-sm uppercase">🕉️ Welcome to Saravana Travels</p>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
             Explore the <span className="text-orange-400">Divine Serenity</span>
@@ -84,7 +94,7 @@ export default function Home() {
             <span>✅ 24/7 Support</span>
           </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white text-2xl">↓</div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white text-2xl z-10">↓</div>
       </section>
 
       {/* Categories — Shiva bg with wings pattern */}

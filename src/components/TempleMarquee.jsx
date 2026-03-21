@@ -75,7 +75,7 @@ export default function TempleMarquee() {
         .marquee-track {
           display: flex;
           width: max-content;
-          animation: scroll-ltr 30s linear infinite;
+          animation: scroll-ltr 600s linear infinite;
         }
 
         @keyframes scroll-ltr {
