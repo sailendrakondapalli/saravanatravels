@@ -40,18 +40,17 @@ export default function Home() {
     <div className="pt-0">
       {/* Hero — Shiva bg */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image Layer */}
+        {/* Background Video Layer */}
         <div className="absolute inset-0" style={{ background: '#0a0f1e' }}>
-          <img
-            src="/siva.png"
-            alt="bg"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center 30%',
-            }}
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0" style={{ background: 'rgba(0,0,30,0.40)' }}></div>
         </div>
         <div className="text-center text-white px-4 max-w-4xl mx-auto relative z-10 pt-24 md:pt-0">
@@ -132,6 +131,84 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Packages — Kasi, Chardham, Nepal */}
+      <section
+        className="py-16"
+        style={{
+          backgroundImage: `linear-gradient(rgba(10,5,30,0.85), rgba(10,5,30,0.85)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">🕉️ Top Picks</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-1">Most Popular Packages</h2>
+            <p className="text-gray-400 mt-2 text-sm">Sacred journeys handpicked for you</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Kasi Yatra',
+                subtitle: 'Varanasi → Prayagraj → Ayodhya',
+                price: '₹35,999',
+                perPerson: '₹35,999/person',
+                days: '6 Days / 5 Nights',
+                badge: 'MOST POPULAR',
+                badgeColor: 'bg-pink-500',
+                img: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=600&q=80',
+                desc: 'Spiritual journey to Kashi Vishwanath, Ganga Aarti, Prayagraj Sangam and Ram Mandir.',
+              },
+              {
+                name: 'Chardham Yatra',
+                subtitle: 'Yamunotri → Gangotri → Kedarnath → Badrinath',
+                price: '₹79,999',
+                perPerson: '₹79,999/person',
+                days: '12 Days / 11 Nights',
+                badge: 'BEST VALUE',
+                badgeColor: 'bg-teal-500',
+                img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80',
+                desc: 'Complete Chardham pilgrimage covering all four sacred dhams in the Himalayas.',
+              },
+              {
+                name: 'Nepal Tour',
+                subtitle: 'Kathmandu → Pokhara → Pashupatinath',
+                price: '₹57,999',
+                perPerson: '₹57,999/person',
+                days: '7 Days / 6 Nights',
+                badge: 'RECOMMENDED',
+                badgeColor: 'bg-teal-600',
+                img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80',
+                desc: 'Himalayan adventure with Pashupatinath temple, Boudhanath Stupa and Pokhara lake views.',
+              },
+            ].map(pkg => (
+              <div key={pkg.name} className="rounded-2xl overflow-hidden shadow-2xl bg-white">
+                <div className="relative">
+                  <img src={pkg.img} alt={pkg.name} className="w-full h-48 object-cover" />
+                  <div className="absolute top-3 left-3">
+                    <span className={`text-xs ${pkg.badgeColor} text-white px-3 py-1 rounded-full font-bold tracking-wide`}>{pkg.badge}</span>
+                  </div>
+                  <div className="absolute top-3 right-3">
+                    <span className="text-xs bg-green-600 text-white px-3 py-1 rounded-full font-bold">{pkg.perPerson}</span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-gray-900 font-bold text-lg leading-tight">{pkg.name}</h3>
+                  <p className="text-gray-500 text-xs mt-1 flex items-center gap-1">⏱ {pkg.days}</p>
+                  <p className="text-gray-600 text-sm mt-2 mb-4">{pkg.desc}</p>
+                  <button
+                    onClick={() => window.open(`https://wa.me/918838691200?text=${encodeURIComponent(`I'm interested in ${pkg.name} (${pkg.price}). Please share details.`)}`, '_blank')}
+                    className="w-full bg-green-600 hover:bg-green-500 text-white py-2.5 rounded-xl text-sm font-bold transition-colors"
+                  >
+                    📲 Enquire Now
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </div>
