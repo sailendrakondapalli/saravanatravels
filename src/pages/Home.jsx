@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom'
 import { waBooking } from '../utils/whatsapp'
 
+// Yale blue replaces all plain blue
+const YALE_BLUE = '#0d47a1'
+
 // Shiva image overlay used wherever blue bg was
 const SHIVA_OVERLAY = `linear-gradient(rgba(10,5,30,0.88), rgba(10,5,30,0.88)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`
 
-// Airplane wings SVG pattern as data URI for blue-replaced sections
-const WINGS_PATTERN = `url("data:image/svg+xml,%3Csvg width='80' height='40' viewBox='0 0 80 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20 L10 5 L20 20 L10 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3Cpath d='M40 20 L70 5 L60 20 L70 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E")`
+// Airplane wings SVG pattern — yale blue tinted
+const WINGS_PATTERN = `url("data:image/svg+xml,%3Csvg width='120' height='60' viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 30 L5 8 L22 30 L5 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Cpath d='M60 30 L115 8 L98 30 L115 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Ccircle cx='60' cy='30' r='3' fill='rgba(13,71,161,0.12)'/%3E%3C/svg%3E")`
 
 const categories = [
   { label: 'Temple Packages', icon: '🛕', to: '/temple', img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=400&q=80', priority: true },
@@ -35,35 +38,45 @@ export default function Home() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="text-center text-white px-4 max-w-3xl mx-auto">
+        <div className="text-center text-white px-4 max-w-4xl mx-auto">
           <p className="text-orange-300 font-medium mb-2 tracking-widest text-sm uppercase">🕉️ Welcome to Saravana Travels</p>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
             Explore the <span className="text-orange-400">Divine Serenity</span>
           </h1>
-          <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
+          <p className="text-gray-300 text-lg mb-6 max-w-xl mx-auto">
             Discover breathtaking destinations, spiritual journeys, and unforgettable experiences crafted just for you.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/temple"
-              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-lg"
-            >
+          {/* Primary CTAs */}
+          <div className="flex flex-wrap gap-3 justify-center mb-4">
+            <Link to="/temple" className="bg-orange-600 hover:bg-orange-700 text-white px-7 py-3 rounded-2xl font-bold text-base transition-all hover:scale-105 shadow-lg">
               🛕 Temple Tours
             </Link>
-            <Link
-              to="/kerala"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-lg"
-            >
-              View Packages
+            <Link to="/kerala" className="text-white px-7 py-3 rounded-2xl font-bold text-base transition-all hover:scale-105 shadow-lg hover:opacity-90" style={{ background: YALE_BLUE }}>
+              🌴 View Packages
             </Link>
             <button
               onClick={() => window.open(waBooking({ message: 'I would like to book a tour package. Please help me.' }), '_blank')}
-              className="bg-white hover:bg-gray-100 text-blue-700 px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-lg"
+              className="bg-green-500 hover:bg-green-600 text-white px-7 py-3 rounded-2xl font-bold text-base transition-all hover:scale-105 shadow-lg"
             >
               📲 Book Now
             </button>
           </div>
-          <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-gray-300">
+          {/* Contact / WhatsApp / Call — all in hero */}
+          <div className="flex flex-wrap gap-3 justify-center mb-8">
+            <Link to="/contact" className="bg-white/15 hover:bg-white/25 backdrop-blur text-white border border-white/30 px-5 py-2 rounded-xl font-semibold text-sm transition-all hover:scale-105">
+              📩 Contact Us
+            </Link>
+            <a href="https://wa.me/918838691200" target="_blank" rel="noreferrer" className="bg-green-600/80 hover:bg-green-600 text-white border border-green-500/40 px-5 py-2 rounded-xl font-semibold text-sm transition-all hover:scale-105">
+              💬 WhatsApp
+            </a>
+            <a href="tel:+918838691200" className="bg-white/15 hover:bg-white/25 backdrop-blur text-white border border-white/30 px-5 py-2 rounded-xl font-semibold text-sm transition-all hover:scale-105">
+              📞 8838691200
+            </a>
+            <a href="tel:+919442855620" className="bg-white/15 hover:bg-white/25 backdrop-blur text-white border border-white/30 px-5 py-2 rounded-xl font-semibold text-sm transition-all hover:scale-105">
+              📞 9442855620
+            </a>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-300">
             <span>✅ 500+ Happy Travelers</span>
             <span>✅ Best Price Guarantee</span>
             <span>✅ 24/7 Support</span>
@@ -110,7 +123,7 @@ export default function Home() {
       {/* YouTube Customer Reviews */}
       <section
         className="py-16"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='40' viewBox='0 0 80 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20 L10 5 L20 20 L10 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3Cpath d='M40 20 L70 5 L60 20 L70 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E")`, backgroundColor: '#0f172a', backgroundSize: '80px 40px' }}
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='60' viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 30 L5 8 L22 30 L5 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Cpath d='M60 30 L115 8 L98 30 L115 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Ccircle cx='60' cy='30' r='3' fill='rgba(13,71,161,0.12)'/%3E%3C/svg%3E")`, backgroundColor: '#0a0f1e', backgroundSize: '120px 60px' }}
       >
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
@@ -151,8 +164,8 @@ export default function Home() {
         className="py-16"
         style={{
           backgroundImage: `${WINGS_PATTERN}`,
-          backgroundColor: '#0f172a',
-          backgroundSize: '80px 40px',
+          backgroundColor: '#0a0f1e',
+          backgroundSize: '120px 60px',
         }}
       >
         <div className="max-w-7xl mx-auto px-4">
@@ -216,32 +229,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact CTA — wings pattern */}
-      <section
-        className="py-16"
-        style={{ backgroundImage: WINGS_PATTERN, backgroundColor: '#0f172a', backgroundSize: '80px 40px' }}
-      >
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-3">Ready to Plan Your Trip?</h2>
-          <p className="text-gray-400 mb-8">Get in touch with us and we'll craft the perfect itinerary for you.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-2xl font-bold transition-all hover:scale-105"
-            >
-              Contact Us
-            </Link>
-            <a
-              href="https://wa.me/918838691200"
-              target="_blank"
-              rel="noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold transition-all hover:scale-105"
-            >
-              💬 WhatsApp Now
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

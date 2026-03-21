@@ -33,7 +33,7 @@ export default function QuickBookingForm() {
   }
 
   return (
-    <section className="py-14" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='40' viewBox='0 0 80 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 20 L10 5 L20 20 L10 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3Cpath d='M40 20 L70 5 L60 20 L70 35 Z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E"), linear-gradient(rgba(10,5,30,0.92), rgba(10,5,30,0.92)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`, backgroundSize: '80px 40px, cover, cover', backgroundPosition: 'center, center, center top' }}>
+    <section className="py-14" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='60' viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 30 L5 8 L22 30 L5 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Cpath d='M60 30 L115 8 L98 30 L115 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Ccircle cx='60' cy='30' r='3' fill='rgba(13,71,161,0.12)'/%3E%3C/svg%3E"), linear-gradient(rgba(10,5,30,0.92), rgba(10,5,30,0.92)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`, backgroundSize: '120px 60px, cover, cover', backgroundPosition: 'center, center, center top' }}>
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-8">
           <p className="text-orange-400 text-sm font-semibold uppercase tracking-widest">Quick Booking</p>

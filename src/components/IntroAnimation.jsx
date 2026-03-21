@@ -28,7 +28,7 @@ export default function IntroAnimation({ onDone }) {
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{
-        background: 'linear-gradient(160deg, #0f172a 0%, #1e3a5f 55%, #0f172a 100%)',
+        background: 'linear-gradient(160deg, #0a0f1e 0%, #0d2a5e 55%, #0a0f1e 100%)',
         opacity: phase === 'fadeout' ? 0 : 1,
         transition: phase === 'fadeout' ? 'opacity 0.7s ease' : 'none',
         pointerEvents: phase === 'fadeout' ? 'none' : 'all',
