@@ -22,13 +22,13 @@ export default function Navbar() {
       <TempleMarquee />
 
       {/* Main navbar */}
-      <nav className="bg-white/95 backdrop-blur shadow-md">
+      <nav className="bg-transparent backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-14">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl">✈️</span>
+            <img src="/logo.png" alt="Saravana Travels" className="h-10 w-10 object-cover rounded-full" />
             <div>
-              <p className="text-blue-700 font-bold text-lg leading-tight">Saravana Travels</p>
-              <p className="text-xs text-gray-500 leading-tight">Explore the Divine Serenity</p>
+              <p className="text-white font-bold text-lg leading-tight">Saravana Travels</p>
+              <p className="text-xs text-gray-300 leading-tight">Explore the Divine Serenity</p>
             </div>
           </Link>
 
@@ -45,7 +45,7 @@ export default function Navbar() {
                       : 'bg-orange-100 text-orange-700 hover:bg-orange-200'
                     : pathname === l.to
                     ? 'bg-blue-600 text-white'
-                    : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                    : 'text-white hover:bg-white/20 hover:text-white'
                 }`}
               >
                 {l.label}
@@ -67,13 +67,13 @@ export default function Navbar() {
             </a>
           </div>
 
-          <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-lg text-gray-700 text-xl">
+          <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-lg text-white text-xl">
             {open ? '✕' : '☰'}
           </button>
         </div>
 
         {open && (
-          <div className="md:hidden bg-white border-t px-4 pb-4 flex flex-col gap-1">
+          <div className="md:hidden bg-black/70 backdrop-blur border-t border-white/10 px-4 pb-4 flex flex-col gap-1">
             {links.map(l => (
               <Link
                 key={l.to}
@@ -84,7 +84,7 @@ export default function Navbar() {
                     ? 'bg-orange-100 text-orange-700'
                     : pathname === l.to
                     ? 'bg-blue-600 text-white'
-                    : 'text-gray-700'
+                    : 'text-white'
                 }`}
               >
                 {l.label}

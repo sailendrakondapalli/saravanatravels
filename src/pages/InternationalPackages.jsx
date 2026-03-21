@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { waBooking } from '../utils/whatsapp'
 
 const packages = [
@@ -67,6 +68,7 @@ const badgeColors = {
 }
 
 export default function InternationalPackages() {
+  useEffect(() => { window.scrollTo(0, 0) }, [])
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
       <div

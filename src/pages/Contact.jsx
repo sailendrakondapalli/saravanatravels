@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { waBooking } from '../utils/whatsapp'
 
 const packages = [
@@ -20,6 +20,7 @@ const packages = [
 export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', package: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
 

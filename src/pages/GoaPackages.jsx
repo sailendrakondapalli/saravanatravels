@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { waBooking } from '../utils/whatsapp'
 
 const goaPlaces = {
@@ -15,6 +15,7 @@ const packages = [
 export default function GoaPackages() {
   const [selected, setSelected] = useState(null)
   const [members, setMembers] = useState(2)
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   const pkg = packages.find(p => p.days === selected)
   const total = pkg ? pkg.price * members : null

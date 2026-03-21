@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import { waBooking } from '../utils/whatsapp'
 
 // Yale blue replaces all plain blue
-const YALE_BLUE = '#0d47a1'
+const YALE_BLUE = '#0E4C92'
 
 // Shiva image overlay used wherever blue bg was
 const SHIVA_OVERLAY = `linear-gradient(rgba(10,5,30,0.88), rgba(10,5,30,0.88)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`
@@ -11,12 +12,12 @@ const SHIVA_OVERLAY = `linear-gradient(rgba(10,5,30,0.88), rgba(10,5,30,0.88)), 
 const WINGS_PATTERN = `url("data:image/svg+xml,%3Csvg width='120' height='60' viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 30 L5 8 L22 30 L5 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Cpath d='M60 30 L115 8 L98 30 L115 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Ccircle cx='60' cy='30' r='3' fill='rgba(13,71,161,0.12)'/%3E%3C/svg%3E")`
 
 const categories = [
-  { label: 'Temple Packages', icon: '🛕', to: '/temple', img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=400&q=80', priority: true },
-  { label: 'Family Packages', icon: '👨‍👩‍👧‍👦', to: '/kerala', img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80' },
-  { label: 'Honeymoon Packages', icon: '💑', to: '/kerala', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80' },
+  { label: 'Temple Packages', icon: '🛕', to: '/temple', img: '/siva.png', priority: true },
+  { label: 'Family Packages', icon: '👨‍👩‍👧‍👦', to: '/kerala', state: { tab: 'family' }, img: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=400&q=80' },
+  { label: 'Honeymoon Packages', icon: '💑', to: '/kerala', state: { tab: 'honeymoon' }, img: 'https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=400&q=80' },
   { label: 'Goa Packages', icon: '🏖️', to: '/goa', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&q=80' },
-  { label: 'International Packages', icon: '🌍', to: '/international', img: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=400&q=80' },
-  { label: 'Kerala Packages', icon: '🌴', to: '/kerala', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&q=80' },
+  { label: 'International Packages', icon: '🌍', to: '/international', img: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&q=80' },
+  { label: 'Kerala Packages', icon: '🌴', to: '/kerala', state: { tab: 'group' }, img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&q=80' },
 ]
 
 const testimonials = [
@@ -27,15 +28,16 @@ const testimonials = [
 ]
 
 export default function Home() {
+  useEffect(() => { window.scrollTo(0, 0) }, [])
   return (
     <div className="pt-24">
       {/* Hero — Shiva bg */}
       <section
         className="relative min-h-screen flex items-center justify-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,40,0.6), rgba(0,0,40,0.6)), url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1600&q=80')`,
+          backgroundImage: `linear-gradient(rgba(0,0,40,0.45), rgba(0,0,40,0.45)), url('/siva.png')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: '50% -100px',
         }}
       >
         <div className="text-center text-white px-4 max-w-4xl mx-auto">
@@ -104,6 +106,7 @@ export default function Home() {
               <Link
                 key={cat.label}
                 to={cat.to}
+                state={cat.state}
                 className={`group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${cat.priority ? 'ring-2 ring-orange-500' : ''}`}
               >
                 <img src={cat.img} alt={cat.label} className="w-full h-40 md:h-52 object-cover group-hover:scale-105 transition-transform duration-500" />

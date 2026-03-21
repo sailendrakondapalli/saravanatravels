@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { waBooking } from '../utils/whatsapp'
 
-const SHIVA_BG = `linear-gradient(rgba(10,5,30,0.82), rgba(10,5,30,0.82)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`
+const SHIVA_BG = `linear-gradient(rgba(10,5,30,0.82), rgba(10,5,30,0.82)), url('/siva.png')`
 
 const allIndia = [
   {
@@ -10,7 +10,7 @@ const allIndia = [
     subtitle: 'Yamunotri → Gangotri → Kedarnath → Badrinath',
     price: '₹79,999',
     rawPrice: '79,999',
-    img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80',
+    img: '/siva.png',
     badge: '🕉️ Sacred',
     highlights: ['Kedarnath Temple', 'Badrinath Dham', 'Gangotri', 'Yamunotri'],
     days: '12 Days',
@@ -20,7 +20,7 @@ const allIndia = [
     subtitle: 'Varanasi → Prayagraj → Ayodhya',
     price: '₹35,999',
     rawPrice: '35,999',
-    img: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=600&q=80',
+    img: '/siva.png',
     badge: '🕉️ Spiritual',
     highlights: ['Kashi Vishwanath', 'Ganga Aarti', 'Prayagraj Sangam', 'Ram Mandir'],
     days: '6 Days',
@@ -30,7 +30,7 @@ const allIndia = [
     subtitle: 'Sacred Himalayan Pilgrimage',
     price: 'Contact Us',
     rawPrice: null,
-    img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+    img: '/siva.png',
     badge: '🕉️ Premium',
     highlights: ['Mt. Kailash', 'Mansarovar Lake', 'Shiva Abode'],
     days: '15+ Days',
@@ -41,7 +41,7 @@ const allIndia = [
     subtitle: 'Tirupati → Tirumala',
     price: '₹12,999',
     rawPrice: '12,999',
-    img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80',
+    img: '/siva.png',
     badge: '🛕 Devotion',
     highlights: ['Venkateswara Temple', 'Padmavathi Temple', 'Kapila Theertham'],
     days: '3 Days',
@@ -51,7 +51,7 @@ const allIndia = [
     subtitle: 'Rameswaram → Madurai → Kanyakumari',
     price: '₹14,999',
     rawPrice: '14,999',
-    img: 'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&q=80',
+    img: '/siva.png',
     badge: '🛕 South India',
     highlights: ['Ramanathaswamy', 'Meenakshi Temple', 'Kanyakumari Sunrise'],
     days: '4 Days',
@@ -61,19 +61,19 @@ const allIndia = [
 const keralaTemples = [
   {
     route: 'Kochi → Alappuzha → Kollam → Varkala → Trivandrum',
-    img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80',
+    img: '/siva.png',
     days: '5 Days',
     price: 21999,
   },
   {
     route: 'Guruvayur → Thrissur → Kochi → Kollam → Varkala → Trivandrum',
-    img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80',
+    img: '/siva.png',
     days: '6 Days',
     price: 21999,
   },
   {
     route: 'Kasaragod → Kannur → Guruvayur → Thrissur → Kochi → Alappuzha → Kollam → Varkala → Trivandrum',
-    img: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=600&q=80',
+    img: '/siva.png',
     days: '9 Days',
     price: 21999,
   },
@@ -116,6 +116,8 @@ function KeralaTempleCalc() {
 export default function TemplePackages() {
   const location = useLocation()
   const [tab, setTab] = useState(location.state?.tab || 'india')
+
+  useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <div className="pt-24 min-h-screen" style={{ background: 'linear-gradient(180deg,#0f0a1e 0%,#1a0a2e 50%,#0f0a1e 100%)' }}>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { waBooking } from '../utils/whatsapp'
 
 const experiences = [
@@ -57,6 +58,7 @@ const badgeColors = {
 }
 
 export default function SignatureExperiences() {
+  useEffect(() => { window.scrollTo(0, 0) }, [])
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
       <div

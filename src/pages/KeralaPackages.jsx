@@ -1,6 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import PricingCalculator from '../components/PricingCalculator'
 import { waBooking } from '../utils/whatsapp'
+
+const heroContent = {
+  group:    { title: 'Kerala Group Packages',    sub: "God's Own Country awaits you",         bg: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1200&q=80' },
+  honeymoon:{ title: 'Honeymoon Packages',       sub: 'Romance in paradise — made for two',   bg: 'https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=1200&q=80' },
+  family:   { title: 'Family Tour Packages',     sub: 'Create memories that last a lifetime', bg: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1200&q=80' },
+  temple:   { title: 'Kerala Temple Tours',      sub: 'Sacred journeys through divine Kerala', bg: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1200&q=80' },
+}
 
 const honeymoonPackages = [
   {
@@ -23,12 +31,12 @@ const honeymoonPackages = [
 const familyPackages = [
   {
     route: 'Kochi → Athirappilly → Munnar → Thekkady → Alappuzha → Kochi',
-    img: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80',
     highlights: ['Waterfall', 'Wildlife Safari', 'Houseboat'],
   },
   {
     route: 'Kochi → Alappuzha → Varkala → Kollam → Trivandrum',
-    img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=600&q=80',
     highlights: ['Backwaters', 'Beach', 'Zoo Visit'],
   },
 ]
@@ -125,7 +133,9 @@ function TemplePriceCalc() {
 }
 
 export default function KeralaPackages() {
-  const [activeTab, setActiveTab] = useState('group')
+  const location = useLocation()
+  const [activeTab, setActiveTab] = useState(location.state?.tab || 'group')
+  useEffect(() => { window.scrollTo(0, 0) }, [])
   const tabs = [
     { id: 'group', label: '👥 Group Packages' },
     { id: 'honeymoon', label: '💑 Honeymoon' },
@@ -138,14 +148,14 @@ export default function KeralaPackages() {
       <div
         className="relative h-64 flex items-center justify-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,80,0.6), rgba(0,0,80,0.6)), url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1200&q=80')`,
+          backgroundImage: `linear-gradient(rgba(0,0,80,0.6), rgba(0,0,80,0.6)), url('${heroContent[activeTab]?.bg}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
         <div className="text-center text-white">
-          <h1 className="text-4xl font-extrabold">Kerala Packages</h1>
-          <p className="text-blue-200 mt-2">God's Own Country awaits you</p>
+          <h1 className="text-4xl font-extrabold">{heroContent[activeTab]?.title}</h1>
+          <p className="text-blue-200 mt-2">{heroContent[activeTab]?.sub}</p>
         </div>
       </div>
 
