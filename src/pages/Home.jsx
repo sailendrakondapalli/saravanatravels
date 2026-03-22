@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { waBooking } from '../utils/whatsapp'
 
@@ -35,24 +35,16 @@ export default function Home() {
     window.addEventListener('resize', handler)
     return () => window.removeEventListener('resize', handler)
   }, [])
-  const isDesktop = width >= 768
+  const navigate = useNavigate()
+  const goToDetail = (pkg) => navigate(`/package/${pkg.id}`, { state: pkg })
   return (
     <div className="pt-0">
       {/* Hero — Shiva bg */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image Layer */}
         <div className="absolute inset-0" style={{ background: '#0a0f1e' }}>
-          <img
-            src="/siva.png"
-            alt="bg"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center 30%',
-            }}
-          />
-          <div className="absolute inset-0" style={{ background: 'rgba(0,0,30,0.20)' }}></div>
+          <img src="/siva.png" alt="bg" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+          <div className="absolute inset-0" style={{ background: 'rgba(0,0,30,0.25)' }}></div>
         </div>
         <div className="text-center text-white px-4 max-w-5xl mx-auto relative z-10 pt-24 md:pt-0">
           <p className="text-orange-300 font-medium mb-2 tracking-widest text-sm uppercase">🕉️ Welcome to Saravana Travels</p>
@@ -117,11 +109,11 @@ export default function Home() {
             </ul>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-extrabold text-green-400">₹35,999</span>
-              <button onClick={() => window.open(`https://wa.me/918838691200?text=${encodeURIComponent("I'm interested in Kasi Yatra (₹35,999). Please share details.")}`, '_blank')} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📲 Book Now</button>
+              <button onClick={() => goToDetail({ id: 'kasi', name: 'Kasi Yatra', price: '₹35,999', rawPrice: '35999', days: '6 Days / 5 Nights', img: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=344&h=256&fit=crop&q=80', badge: 'MOST POPULAR', badgeColor: '#ec4899', desc: 'A sacred spiritual journey to Varanasi, Prayagraj and Ayodhya — the holiest cities of India.', highlights: ['Kashi Vishwanath Temple darshan', 'Ganga Aarti at Dashashwamedh Ghat', 'Prayagraj Sangam & Triveni', 'Ram Mandir Ayodhya', 'Boat ride on River Ganga', 'Sarnath Buddhist site'], itinerary: ['Arrival at Varanasi, hotel check-in, evening Ganga Aarti', 'Kashi Vishwanath darshan, Kashi Corridor tour', 'Sarnath visit, local temple tour', 'Travel to Prayagraj, Sangam darshan & holy dip', 'Travel to Ayodhya, Ram Mandir darshan', 'Return journey'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
             </div>
           </div>
           <div className="flex-1">
-            <img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=600&q=80" alt="Kasi Yatra" className="rounded-2xl shadow-2xl w-full h-64 object-cover" />
+            <img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=344&h=256&fit=crop&q=80" alt="Kasi Yatra" className="rounded-2xl shadow-2xl w-full h-64 object-cover" />
           </div>
         </div>
       </section>
@@ -148,7 +140,7 @@ export default function Home() {
             </ul>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-extrabold text-green-400">₹79,999</span>
-              <button onClick={() => window.open(`https://wa.me/918838691200?text=${encodeURIComponent("I'm interested in Chardham Yatra (₹79,999). Please share details.")}`, '_blank')} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📲 Book Now</button>
+              <button onClick={() => goToDetail({ id: 'chardham', name: 'Chardham Yatra', price: '₹79,999', rawPrice: '79999', days: '12 Days / 11 Nights', img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80', badge: 'BEST VALUE', badgeColor: '#14b8a6', desc: 'The most sacred pilgrimage in Hinduism — visit all four divine dhams in the Himalayas.', highlights: ['Kedarnath Temple darshan', 'Badrinath Dham darshan', 'Gangotri — source of Ganga', 'Yamunotri — source of Yamuna', 'Helicopter option available', 'All meals & accommodation included'], itinerary: ['Arrival Haridwar, Rishikesh sightseeing', 'Drive to Yamunotri, temple darshan', 'Drive to Gangotri, temple darshan', 'Drive to Kedarnath base, trek begins', 'Kedarnath Temple darshan', 'Drive to Badrinath', 'Badrinath darshan, Mana village', 'Return to Haridwar', 'Haridwar Ganga Aarti', 'Drive to Rishikesh', 'Local sightseeing', 'Departure'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
             </div>
           </div>
           <div className="flex-1">
@@ -179,7 +171,7 @@ export default function Home() {
             </ul>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-extrabold text-green-400">₹57,999</span>
-              <button onClick={() => window.open(`https://wa.me/918838691200?text=${encodeURIComponent("I'm interested in Nepal Tour (₹57,999). Please share details.")}`, '_blank')} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📲 Book Now</button>
+              <button onClick={() => goToDetail({ id: 'nepal', name: 'Nepal Tour', price: '₹57,999', rawPrice: '57999', days: '7 Days / 6 Nights', img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80', badge: 'RECOMMENDED', badgeColor: '#0d9488', desc: 'Explore the spiritual and natural wonders of Nepal — from ancient temples to Himalayan peaks.', highlights: ['Pashupatinath Temple darshan', 'Boudhanath Stupa visit', 'Pokhara Lake & Himalayan views', 'Everest viewpoint', 'Swayambhunath Monkey Temple', 'Chitwan jungle safari option'], itinerary: ['Arrival Kathmandu, hotel check-in', 'Pashupatinath, Boudhanath, Swayambhunath', 'Kathmandu Durbar Square, Patan', 'Drive to Pokhara, lakeside walk', 'Sarangkot sunrise, Phewa Lake boat ride', 'Drive back to Kathmandu', 'Departure'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
             </div>
           </div>
           <div className="flex-1">
@@ -210,9 +202,9 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-1">Choose Your Dream Destination</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {categories.map(cat => (
+            {categories.map((cat, i) => (
               <Link
-                key={cat.label}
+                key={cat.label + i}
                 to={cat.to}
                 state={cat.state}
                 className={`group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${cat.priority ? 'ring-2 ring-orange-500' : ''}`}
@@ -226,6 +218,51 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* All Packages Grid */}
+      <section className="py-16" style={{ backgroundColor: '#0a0f1e' }}>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">📦 All Packages</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-1">Explore Every Package</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { id: 'kasi', name: 'Kasi Yatra', sub: 'Varanasi · Prayagraj · Ayodhya', price: '₹35,999', days: '6 Days', badge: 'MOST POPULAR', color: '#ec4899', img: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=344&h=256&fit=crop&q=80' },
+              { id: 'chardham', name: 'Chardham Yatra', sub: 'Yamunotri · Gangotri · Kedarnath · Badrinath', price: '₹79,999', days: '12 Days', badge: 'BEST VALUE', color: '#14b8a6', img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80' },
+              { id: 'nepal', name: 'Nepal Tour', sub: 'Kathmandu · Pokhara · Pashupatinath', price: '₹57,999', days: '7 Days', badge: 'RECOMMENDED', color: '#0d9488', img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80' },
+              { id: 'tirupati', name: 'Tirupati Darshan', sub: 'Tirupati · Tirumala', price: '₹12,999', days: '3 Days', badge: 'DEVOTION', color: '#f59e0b', img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80' },
+              { id: 'rameswaram', name: 'Rameswaram & Madurai', sub: 'Rameswaram · Madurai · Kanyakumari', price: '₹14,999', days: '4 Days', badge: 'SOUTH INDIA', color: '#7c3aed', img: 'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&q=80' },
+              { id: 'andaman', name: 'Andaman Islands', sub: 'Port Blair · Havelock · Neil Island', price: '₹45,000', days: '6 Days', badge: 'BEACH PARADISE', color: '#0891b2', img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80' },
+              { id: 'golden_triangle', name: 'Golden Triangle', sub: 'Delhi · Agra · Jaipur', price: '₹33,000', days: '6 Days', badge: 'HERITAGE', color: '#d97706', img: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80' },
+              { id: 'kailash', name: 'Kailash Mansarovar', sub: 'Sacred Himalayan Pilgrimage', price: 'Contact Us', days: '15+ Days', badge: 'PREMIUM', color: '#7c3aed', img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80' },
+              { id: 'kerala_group', name: 'Kerala Group Tour', sub: 'Kochi · Munnar · Alleppey · Kovalam', price: '₹6,999', days: '5 Days', badge: 'GROUP TOUR', color: '#059669', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80' },
+              { id: 'kerala_honeymoon', name: 'Kerala Honeymoon', sub: 'Kochi · Munnar · Alleppey · Varkala', price: '₹25,999', days: '5 Days', badge: 'HONEYMOON', color: '#db2777', img: 'https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=600&q=80' },
+              { id: 'goa', name: 'Goa Friends Package', sub: 'North Goa · South Goa · Beaches', price: '₹9,999', days: '4 Days', badge: 'FRIENDS TRIP', color: '#0284c7', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80' },
+            ].map(pkg => (
+              <div key={pkg.id} className="rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <div className="relative">
+                  <img src={pkg.img} alt={pkg.name} className="w-full h-44 object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <span className="absolute top-3 left-3 text-white text-xs font-bold px-3 py-1 rounded-full" style={{ background: pkg.color }}>{pkg.badge}</span>
+                  <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">🗓️ {pkg.days}</span>
+                </div>
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="font-bold text-white text-base">{pkg.name}</h3>
+                  <p className="text-gray-400 text-xs mt-1">{pkg.sub}</p>
+                  <div className="mt-auto pt-4 flex items-center justify-between">
+                    <p className="text-green-400 font-bold text-lg">{pkg.price}</p>
+                    <div className="flex gap-2">
+                      <button onClick={() => navigate(`/package/${pkg.id}`)} className="bg-orange-600 hover:bg-orange-500 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors">📋 Details</button>
+                      <button onClick={() => window.open(`https://wa.me/918838691200?text=${encodeURIComponent('Hi! I want to book ' + pkg.name + '. Please confirm availability.')}`, '_blank')} className="bg-green-600 hover:bg-green-500 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors">📲 Book</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

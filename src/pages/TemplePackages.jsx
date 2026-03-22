@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { waBooking } from '../utils/whatsapp'
+
+const DETAIL_IDS = { 'Kasi Yatra': 'kasi', 'Chardham Yatra': 'chardham', 'Kailash Mansarovar': 'kailash', 'Tirupati Darshan': 'tirupati', 'Rameswaram & Madurai': 'rameswaram' }
 
 const SHIVA_BG = `linear-gradient(rgba(10,5,30,0.82), rgba(10,5,30,0.82)), url('/siva.png')`
 
@@ -115,6 +117,7 @@ function KeralaTempleCalc() {
 
 export default function TemplePackages() {
   const location = useLocation()
+  const navigate = useNavigate()
   const [tab, setTab] = useState(location.state?.tab || 'india')
   const [width, setWidth] = useState(window.innerWidth)
 
@@ -193,12 +196,17 @@ export default function TemplePackages() {
                       <p className="text-xs text-orange-500">{pkg.contactOnly ? 'for pricing' : 'per person'}</p>
                       <p className="font-bold text-xl text-orange-300">{pkg.price}</p>
                     </div>
-                    <button
-                      onClick={() => window.open(waBooking({ packageName: pkg.name, price: pkg.rawPrice || '', message: pkg.subtitle }), '_blank')}
-                      className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors"
-                    >
-                      {pkg.contactOnly ? '📞 Enquire' : '📲 Book Now'}
-                    </button>
+                    <div className="flex gap-2">
+                      {DETAIL_IDS[pkg.name] && (
+                        <button onClick={() => navigate(`/package/${DETAIL_IDS[pkg.name]}`)} className="bg-orange-700 hover:bg-orange-600 text-white px-3 py-2 rounded-xl text-sm font-semibold transition-colors">📋 Details</button>
+                      )}
+                      <button
+                        onClick={() => window.open(waBooking({ packageName: pkg.name, price: pkg.rawPrice || '', message: pkg.subtitle }), '_blank')}
+                        className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors"
+                      >
+                        {pkg.contactOnly ? '📞 Enquire' : '📲 Book'}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

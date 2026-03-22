@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { waBooking } from '../utils/whatsapp'
 
 const goaPlaces = {
@@ -13,6 +14,7 @@ const packages = [
 ]
 
 export default function GoaPackages() {
+  const navigate = useNavigate()
   const [selected, setSelected] = useState(null)
   const [members, setMembers] = useState(2)
   useEffect(() => { window.scrollTo(0, 0) }, [])
@@ -78,6 +80,12 @@ export default function GoaPackages() {
                   ))}
                 </ul>
                 {selected === p.days && <div className="mt-3 text-center text-blue-600 text-xs font-semibold">✓ Selected</div>}
+                <button
+                  onClick={(e) => { e.stopPropagation(); navigate('/package/goa') }}
+                  className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-2 rounded-xl font-semibold transition-colors"
+                >
+                  📋 View Details
+                </button>
               </div>
             ))}
           </div>

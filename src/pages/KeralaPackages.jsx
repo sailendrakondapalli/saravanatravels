@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import PricingCalculator from '../components/PricingCalculator'
 import { waBooking } from '../utils/whatsapp'
 
@@ -134,6 +134,7 @@ function TemplePriceCalc() {
 
 export default function KeralaPackages() {
   const location = useLocation()
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState(location.state?.tab || 'group')
   useEffect(() => { window.scrollTo(0, 0) }, [])
   const tabs = [
@@ -195,8 +196,14 @@ export default function KeralaPackages() {
                         <p className="text-lg font-bold text-gray-800 mt-2">₹{pkg.price.toLocaleString()}</p>
                         <p className="text-xs text-gray-400">per person</p>
                         <button
+                          onClick={() => navigate('/package/kerala_group')}
+                          className="mt-2 block w-full bg-blue-600 text-white text-xs py-1.5 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+                        >
+                          📋 Details
+                        </button>
+                        <button
                           onClick={() => window.open(waBooking({ packageName: `Kerala Group Package - ${pkg.days} Days`, price: pkg.price.toLocaleString() }), '_blank')}
-                          className="mt-3 block w-full bg-green-500 text-white text-xs py-2 rounded-xl font-semibold hover:bg-green-600 transition-colors"
+                          className="mt-1 block w-full bg-green-500 text-white text-xs py-2 rounded-xl font-semibold hover:bg-green-600 transition-colors"
                         >
                           📲 Book
                         </button>
@@ -235,14 +242,22 @@ export default function KeralaPackages() {
                         <span key={h} className="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full">{h}</span>
                       ))}
                     </div>
-                    <div className="mt-4 flex items-center justify-between">
+                    <div className="mt-4 flex items-center justify-between gap-2">
                       <p className="text-blue-700 font-bold">₹25,999 <span className="text-xs text-gray-400 font-normal">/ couple</span></p>
-                      <button
-                        onClick={() => window.open(waBooking({ packageName: `Kerala Honeymoon - ${pkg.route}`, price: '25,999', members: 2 }), '_blank')}
-                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors"
-                      >
-                        📲 Book Now
-                      </button>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => navigate('/package/kerala_honeymoon')}
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors"
+                        >
+                          📋 Details
+                        </button>
+                        <button
+                          onClick={() => window.open(waBooking({ packageName: `Kerala Honeymoon - ${pkg.route}`, price: '25,999', members: 2 }), '_blank')}
+                          className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors"
+                        >
+                          📲 Book
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -267,12 +282,20 @@ export default function KeralaPackages() {
                           <span key={h} className="bg-green-50 text-green-700 text-xs px-2 py-1 rounded-full">{h}</span>
                         ))}
                       </div>
-                      <button
-                        onClick={() => window.open(waBooking({ packageName: `Kerala Family Package - ${pkg.route}` }), '_blank')}
-                        className="mt-3 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors w-fit"
-                      >
-                        📲 Book Now
-                      </button>
+                      <div className="flex gap-2 mt-3">
+                        <button
+                          onClick={() => navigate('/package/kerala_group')}
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors"
+                        >
+                          📋 Details
+                        </button>
+                        <button
+                          onClick={() => window.open(waBooking({ packageName: `Kerala Family Package - ${pkg.route}` }), '_blank')}
+                          className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors"
+                        >
+                          📲 Book Now
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
