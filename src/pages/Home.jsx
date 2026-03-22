@@ -268,6 +268,73 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      {(() => {
+        const GALLERY_IMGS = [
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.21 PM.jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.22 PM.jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.24 PM (1).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.24 PM (2).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.24 PM.jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.25 PM.jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.26 PM (1).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.26 PM.jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.27 PM (1).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.27 PM (2).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.27 PM.jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.28 PM (1).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.28 PM (2).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.28 PM.jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.29 PM (1).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.29 PM (2).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.29 PM.jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.30 PM (1).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.30 PM (2).jpeg',
+          '/galery/WhatsApp Image 2026-03-22 at 12.53.30 PM.jpeg',
+        ]
+        const [lightboxIdx, setLightboxIdx] = useState(null)
+        return (
+          <section className="py-16" style={{ background: '#0a0f1e' }}>
+            {/* Lightbox */}
+            {lightboxIdx !== null && (
+              <div
+                onClick={() => setLightboxIdx(null)}
+                style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.93)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                <button onClick={() => setLightboxIdx(null)} style={{ position: 'absolute', top: 20, right: 24, color: 'white', fontSize: 36, background: 'none', border: 'none', cursor: 'pointer', lineHeight: 1 }}>✕</button>
+                <button onClick={e => { e.stopPropagation(); setLightboxIdx((lightboxIdx - 1 + GALLERY_IMGS.length) % GALLERY_IMGS.length) }} style={{ position: 'absolute', left: 16, color: 'white', fontSize: 36, background: 'rgba(255,255,255,0.1)', border: 'none', cursor: 'pointer', borderRadius: 8, padding: '8px 14px' }}>‹</button>
+                <img src={GALLERY_IMGS[lightboxIdx]} alt="" onClick={e => e.stopPropagation()} style={{ maxWidth: '90vw', maxHeight: '88vh', borderRadius: 12, objectFit: 'contain', boxShadow: '0 8px 40px rgba(0,0,0,0.8)' }} />
+                <button onClick={e => { e.stopPropagation(); setLightboxIdx((lightboxIdx + 1) % GALLERY_IMGS.length) }} style={{ position: 'absolute', right: 16, color: 'white', fontSize: 36, background: 'rgba(255,255,255,0.1)', border: 'none', cursor: 'pointer', borderRadius: 8, padding: '8px 14px' }}>›</button>
+                <div style={{ position: 'absolute', bottom: 16, color: 'rgba(255,255,255,0.5)', fontSize: 13 }}>{lightboxIdx + 1} / {GALLERY_IMGS.length}</div>
+              </div>
+            )}
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="text-center mb-10">
+                <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">📸 Memories</p>
+                <h2 className="text-3xl font-bold text-white mt-1">Our Travel Gallery</h2>
+                <p className="text-gray-400 mt-2 text-sm">Real moments from our journeys</p>
+              </div>
+              <div
+                className="gallery-scroll"
+                style={{ display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 12, scrollbarWidth: 'thin', scrollbarColor: '#f97316 rgba(255,255,255,0.1)', WebkitOverflowScrolling: 'touch' }}
+              >
+                {GALLERY_IMGS.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`Gallery ${i + 1}`}
+                    onClick={() => setLightboxIdx(i)}
+                    style={{ height: 240, width: 'auto', minWidth: 180, maxWidth: 320, objectFit: 'cover', borderRadius: 16, flexShrink: 0, border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', transition: 'transform 0.2s, box-shadow 0.2s' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(249,115,22,0.3)' }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      })()}
+
       {/* YouTube Customer Reviews */}
       <section
         className="py-16"
