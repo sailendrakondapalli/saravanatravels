@@ -22,7 +22,7 @@ const allIndia = [
     subtitle: 'Yamunotri → Gangotri → Kedarnath → Badrinath',
     price: '₹79,999',
     rawPrice: '79,999',
-    img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600&q=80',
     badge: '🕉️ Sacred',
     highlights: ['Kedarnath Temple', 'Badrinath Dham', 'Gangotri', 'Yamunotri'],
     days: '12 Days',
@@ -30,13 +30,12 @@ const allIndia = [
   {
     name: 'Kailash Mansarovar',
     subtitle: 'Sacred Himalayan Pilgrimage',
-    price: 'Contact Us',
-    rawPrice: null,
+    price: '₹2,75,000',
+    rawPrice: '2,75,000',
     img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
     badge: '🕉️ Premium',
     highlights: ['Mt. Kailash', 'Mansarovar Lake', 'Shiva Abode'],
     days: '15+ Days',
-    contactOnly: true,
   },
   {
     name: 'Tirupati Darshan',
@@ -193,7 +192,7 @@ export default function TemplePackages() {
                   </div>
                   <div className="mt-auto pt-4 flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-orange-500">{pkg.contactOnly ? 'for pricing' : 'per person'}</p>
+                      <p className="text-xs text-orange-500">per person</p>
                       <p className="font-bold text-xl text-orange-300">{pkg.price}</p>
                     </div>
                     <div className="flex gap-2">
@@ -204,7 +203,7 @@ export default function TemplePackages() {
                         onClick={() => window.open(waBooking({ packageName: pkg.name, price: pkg.rawPrice || '', message: pkg.subtitle }), '_blank')}
                         className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors"
                       >
-                        {pkg.contactOnly ? '📞 Enquire' : '📲 Book'}
+                        📲 Book
                       </button>
                     </div>
                   </div>

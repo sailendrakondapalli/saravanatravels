@@ -1,14 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom'
+﻿import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { waBooking } from '../utils/whatsapp'
 
-// Yale blue replaces all plain blue
-const YALE_BLUE = '#0E4C92'
-
-// Shiva image overlay used wherever blue bg was
 const SHIVA_OVERLAY = `linear-gradient(rgba(10,5,30,0.88), rgba(10,5,30,0.88)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`
-
-// Airplane wings SVG pattern — yale blue tinted
 const WINGS_PATTERN = `url("data:image/svg+xml,%3Csvg width='120' height='60' viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 30 L5 8 L22 30 L5 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Cpath d='M60 30 L115 8 L98 30 L115 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Ccircle cx='60' cy='30' r='3' fill='rgba(13,71,161,0.12)'/%3E%3C/svg%3E")`
 
 const categories = [
@@ -20,28 +14,17 @@ const categories = [
   { label: 'Kerala Packages', icon: '🌴', to: '/kerala', state: { tab: 'group' }, img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&q=80' },
 ]
 
-const testimonials = [
-  { name: 'Priya Sharma', location: 'Chennai', text: 'Amazing Kerala trip! Everything was perfectly organized. The houseboat experience was unforgettable.', rating: 5 },
-  { name: 'Rajesh Kumar', location: 'Bangalore', text: 'Saravana Travels made our honeymoon truly special. Highly recommend their packages!', rating: 5 },
-  { name: 'Meena Devi', location: 'Coimbatore', text: 'The temple tour was spiritually enriching. Great service and very affordable pricing.', rating: 5 },
-  { name: 'Arjun Nair', location: 'Hyderabad', text: 'Goa trip with friends was a blast! Well-planned itinerary and excellent support throughout.', rating: 5 },
-]
+const CHARDHAM_IMG = '/chardam.png'
+const CHARDHAM_BG = '/chardam.png'
 
 export default function Home() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
-  const [width, setWidth] = useState(window.innerWidth)
-  useEffect(() => {
-    const handler = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', handler)
-    return () => window.removeEventListener('resize', handler)
-  }, [])
   const navigate = useNavigate()
   const goToDetail = (pkg) => navigate(`/package/${pkg.id}`, { state: pkg })
   return (
     <div className="pt-0">
-      {/* Hero — Shiva bg */}
+      {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image Layer */}
         <div className="absolute inset-0" style={{ background: '#0a0f1e' }}>
           <img src="/siva.png" alt="bg" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
           <div className="absolute inset-0" style={{ background: 'rgba(0,0,30,0.25)' }}></div>
@@ -54,7 +37,6 @@ export default function Home() {
           <p className="text-gray-300 text-lg mb-6 max-w-xl mx-auto">
             Discover breathtaking destinations, spiritual journeys, and unforgettable experiences crafted just for you.
           </p>
-          {/* Primary CTA — only Book Now */}
           <div className="flex flex-wrap gap-3 justify-center mb-4">
             <button
               onClick={() => window.open(waBooking({ message: 'I would like to book a tour package. Please help me.' }), '_blank')}
@@ -63,7 +45,6 @@ export default function Home() {
               📲 Book Now
             </button>
           </div>
-          {/* Contact / WhatsApp / Call */}
           <div className="flex flex-wrap gap-3 justify-center mb-8">
             <Link to="/contact" className="bg-white/15 hover:bg-white/25 backdrop-blur text-white border border-white/30 px-5 py-2 rounded-xl font-semibold text-sm transition-all hover:scale-105">
               📩 Contact Us
@@ -87,7 +68,7 @@ export default function Home() {
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white text-2xl z-10">↓</div>
       </section>
 
-      {/* Wave divider */}
+      {/* Wave */}
       <div style={{ lineHeight: 0, background: '#0a0f1e' }}>
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: 'block', width: '100%' }}>
           <path d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z" fill="#0a0f1e" />
@@ -104,12 +85,12 @@ export default function Home() {
             <ul className="text-gray-300 text-sm space-y-1 mb-6">
               <li>✅ Kashi Vishwanath Temple darshan</li>
               <li>✅ Ganga Aarti at Dashashwamedh Ghat</li>
-              <li>✅ Prayagraj Sangam & Triveni</li>
+              <li>✅ Prayagraj Sangam &amp; Triveni</li>
               <li>✅ Ram Mandir, Ayodhya</li>
             </ul>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-extrabold text-green-400">₹35,999</span>
-              <button onClick={() => goToDetail({ id: 'kasi', name: 'Kasi Yatra', price: '₹35,999', rawPrice: '35999', days: '6 Days / 5 Nights', img: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=344&h=256&fit=crop&q=80', badge: 'MOST POPULAR', badgeColor: '#ec4899', desc: 'A sacred spiritual journey to Varanasi, Prayagraj and Ayodhya — the holiest cities of India.', highlights: ['Kashi Vishwanath Temple darshan', 'Ganga Aarti at Dashashwamedh Ghat', 'Prayagraj Sangam & Triveni', 'Ram Mandir Ayodhya', 'Boat ride on River Ganga', 'Sarnath Buddhist site'], itinerary: ['Arrival at Varanasi, hotel check-in, evening Ganga Aarti', 'Kashi Vishwanath darshan, Kashi Corridor tour', 'Sarnath visit, local temple tour', 'Travel to Prayagraj, Sangam darshan & holy dip', 'Travel to Ayodhya, Ram Mandir darshan', 'Return journey'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
+              <button onClick={() => goToDetail({ id: 'kasi', name: 'Kasi Yatra', price: '₹35,999', rawPrice: '35999', days: '6 Days / 5 Nights', img: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=344&h=256&fit=crop&q=80', badge: 'MOST POPULAR', badgeColor: '#ec4899', desc: 'A sacred spiritual journey to Varanasi, Prayagraj and Ayodhya.', highlights: ['Kashi Vishwanath Temple darshan', 'Ganga Aarti at Dashashwamedh Ghat', 'Prayagraj Sangam & Triveni', 'Ram Mandir Ayodhya', 'Boat ride on River Ganga', 'Sarnath Buddhist site'], itinerary: ['Arrival at Varanasi, hotel check-in, evening Ganga Aarti', 'Kashi Vishwanath darshan, Kashi Corridor tour', 'Sarnath visit, local temple tour', 'Travel to Prayagraj, Sangam darshan & holy dip', 'Travel to Ayodhya, Ram Mandir darshan', 'Return journey'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
             </div>
           </div>
           <div className="flex-1">
@@ -118,7 +99,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wave divider */}
       <div style={{ lineHeight: 0 }}>
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: 'block', width: '100%' }}>
           <path d="M0,0 C360,80 1080,0 1440,80 L1440,80 L0,80 Z" fill="#1a0a2e" />
@@ -126,7 +106,7 @@ export default function Home() {
       </div>
 
       {/* Chardham Yatra Section */}
-      <section className="relative py-20" style={{ backgroundImage: `linear-gradient(rgba(5,10,30,0.75), rgba(5,10,30,0.75)), url('https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=1400&q=80')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="relative py-20" style={{ backgroundImage: `linear-gradient(rgba(5,10,30,0.75), rgba(5,10,30,0.75)), url('${CHARDHAM_BG}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row-reverse items-center gap-10">
           <div className="flex-1 text-white">
             <span className="text-xs bg-teal-500 text-white px-3 py-1 rounded-full font-bold mb-3 inline-block">BEST VALUE</span>
@@ -140,16 +120,15 @@ export default function Home() {
             </ul>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-extrabold text-green-400">₹79,999</span>
-              <button onClick={() => goToDetail({ id: 'chardham', name: 'Chardham Yatra', price: '₹79,999', rawPrice: '79999', days: '12 Days / 11 Nights', img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80', badge: 'BEST VALUE', badgeColor: '#14b8a6', desc: 'The most sacred pilgrimage in Hinduism — visit all four divine dhams in the Himalayas.', highlights: ['Kedarnath Temple darshan', 'Badrinath Dham darshan', 'Gangotri — source of Ganga', 'Yamunotri — source of Yamuna', 'Helicopter option available', 'All meals & accommodation included'], itinerary: ['Arrival Haridwar, Rishikesh sightseeing', 'Drive to Yamunotri, temple darshan', 'Drive to Gangotri, temple darshan', 'Drive to Kedarnath base, trek begins', 'Kedarnath Temple darshan', 'Drive to Badrinath', 'Badrinath darshan, Mana village', 'Return to Haridwar', 'Haridwar Ganga Aarti', 'Drive to Rishikesh', 'Local sightseeing', 'Departure'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
+              <button onClick={() => goToDetail({ id: 'chardham', name: 'Chardham Yatra', price: '₹79,999', rawPrice: '79999', days: '12 Days / 11 Nights', img: CHARDHAM_IMG, badge: 'BEST VALUE', badgeColor: '#14b8a6', desc: 'The most sacred pilgrimage in Hinduism — visit all four divine dhams in the Himalayas.', highlights: ['Kedarnath Temple darshan', 'Badrinath Dham darshan', 'Gangotri — source of Ganga', 'Yamunotri — source of Yamuna', 'Helicopter option available', 'All meals & accommodation included'], itinerary: ['Arrival Haridwar, Rishikesh sightseeing', 'Drive to Yamunotri, temple darshan', 'Drive to Gangotri, temple darshan', 'Drive to Kedarnath base, trek begins', 'Kedarnath Temple darshan', 'Drive to Badrinath', 'Badrinath darshan, Mana village', 'Return to Haridwar', 'Haridwar Ganga Aarti', 'Drive to Rishikesh', 'Local sightseeing', 'Departure'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
             </div>
           </div>
           <div className="flex-1">
-            <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80" alt="Chardham Yatra" className="rounded-2xl shadow-2xl w-full h-64 object-cover" />
+            <img src={CHARDHAM_IMG} alt="Chardham Yatra" className="rounded-2xl shadow-2xl w-full h-64 object-cover" />
           </div>
         </div>
       </section>
 
-      {/* Wave divider */}
       <div style={{ lineHeight: 0 }}>
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: 'block', width: '100%' }}>
           <path d="M0,80 C360,0 1080,80 1440,0 L1440,80 L0,80 Z" fill="#0f0a1e" />
@@ -166,12 +145,12 @@ export default function Home() {
             <ul className="text-gray-300 text-sm space-y-1 mb-6">
               <li>✅ Pashupatinath Temple darshan</li>
               <li>✅ Boudhanath Stupa</li>
-              <li>✅ Pokhara Lake & Himalayan views</li>
+              <li>✅ Pokhara Lake &amp; Himalayan views</li>
               <li>✅ Everest viewpoint</li>
             </ul>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-extrabold text-green-400">₹57,999</span>
-              <button onClick={() => goToDetail({ id: 'nepal', name: 'Nepal Tour', price: '₹57,999', rawPrice: '57999', days: '7 Days / 6 Nights', img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80', badge: 'RECOMMENDED', badgeColor: '#0d9488', desc: 'Explore the spiritual and natural wonders of Nepal — from ancient temples to Himalayan peaks.', highlights: ['Pashupatinath Temple darshan', 'Boudhanath Stupa visit', 'Pokhara Lake & Himalayan views', 'Everest viewpoint', 'Swayambhunath Monkey Temple', 'Chitwan jungle safari option'], itinerary: ['Arrival Kathmandu, hotel check-in', 'Pashupatinath, Boudhanath, Swayambhunath', 'Kathmandu Durbar Square, Patan', 'Drive to Pokhara, lakeside walk', 'Sarangkot sunrise, Phewa Lake boat ride', 'Drive back to Kathmandu', 'Departure'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
+              <button onClick={() => goToDetail({ id: 'nepal', name: 'Nepal Tour', price: '₹57,999', rawPrice: '57999', days: '7 Days / 6 Nights', img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80', badge: 'RECOMMENDED', badgeColor: '#0d9488', desc: 'Explore the spiritual and natural wonders of Nepal.', highlights: ['Pashupatinath Temple darshan', 'Boudhanath Stupa visit', 'Pokhara Lake & Himalayan views', 'Everest viewpoint', 'Swayambhunath Monkey Temple', 'Chitwan jungle safari option'], itinerary: ['Arrival Kathmandu, hotel check-in', 'Pashupatinath, Boudhanath, Swayambhunath', 'Kathmandu Durbar Square, Patan', 'Drive to Pokhara, lakeside walk', 'Sarangkot sunrise, Phewa Lake boat ride', 'Drive back to Kathmandu', 'Departure'] })} className="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105">📋 View Details</button>
             </div>
           </div>
           <div className="flex-1">
@@ -180,22 +159,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wave divider into categories */}
       <div style={{ lineHeight: 0 }}>
         <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: 'block', width: '100%' }}>
           <path d="M0,0 C480,80 960,0 1440,80 L1440,80 L0,80 Z" fill="#0a0f1e" />
         </svg>
       </div>
 
-      {/* Categories — Shiva bg with wings pattern */}
-      <section
-        className="py-16"
-        style={{
-          backgroundImage: `${WINGS_PATTERN}, ${SHIVA_OVERLAY}`,
-          backgroundSize: '80px 40px, cover',
-          backgroundPosition: 'center, center top',
-        }}
-      >
+      {/* Categories */}
+      <section className="py-16" style={{ backgroundImage: `${WINGS_PATTERN}, ${SHIVA_OVERLAY}`, backgroundSize: '80px 40px, cover', backgroundPosition: 'center, center top' }}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">🕉️ Our Packages</p>
@@ -203,12 +174,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {categories.map((cat, i) => (
-              <Link
-                key={cat.label + i}
-                to={cat.to}
-                state={cat.state}
-                className={`group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${cat.priority ? 'ring-2 ring-orange-500' : ''}`}
-              >
+              <Link key={cat.label + i} to={cat.to} state={cat.state} className={`group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${cat.priority ? 'ring-2 ring-orange-500' : ''}`}>
                 <img src={cat.img} alt={cat.label} className="w-full h-40 md:h-52 object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent flex items-end p-4">
                   <div>
@@ -233,13 +199,13 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { id: 'kasi', name: 'Kasi Yatra', sub: 'Varanasi · Prayagraj · Ayodhya', price: '₹35,999', days: '6 Days', badge: 'MOST POPULAR', color: '#ec4899', img: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=344&h=256&fit=crop&q=80' },
-              { id: 'chardham', name: 'Chardham Yatra', sub: 'Yamunotri · Gangotri · Kedarnath · Badrinath', price: '₹79,999', days: '12 Days', badge: 'BEST VALUE', color: '#14b8a6', img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=600&q=80' },
+              { id: 'chardham', name: 'Chardham Yatra', sub: 'Yamunotri · Gangotri · Kedarnath · Badrinath', price: '₹79,999', days: '12 Days', badge: 'BEST VALUE', color: '#14b8a6', img: CHARDHAM_IMG },
               { id: 'nepal', name: 'Nepal Tour', sub: 'Kathmandu · Pokhara · Pashupatinath', price: '₹57,999', days: '7 Days', badge: 'RECOMMENDED', color: '#0d9488', img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80' },
               { id: 'tirupati', name: 'Tirupati Darshan', sub: 'Tirupati · Tirumala', price: '₹12,999', days: '3 Days', badge: 'DEVOTION', color: '#f59e0b', img: 'https://images.unsplash.com/photo-1609766418204-94aae0ecfdfc?w=344&h=256&fit=crop&q=80' },
               { id: 'rameswaram', name: 'Rameswaram & Madurai', sub: 'Rameswaram · Madurai · Kanyakumari', price: '₹14,999', days: '4 Days', badge: 'SOUTH INDIA', color: '#7c3aed', img: 'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&q=80' },
               { id: 'andaman', name: 'Andaman Islands', sub: 'Port Blair · Havelock · Neil Island', price: '₹45,000', days: '6 Days', badge: 'BEACH PARADISE', color: '#0891b2', img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80' },
               { id: 'golden_triangle', name: 'Golden Triangle', sub: 'Delhi · Agra · Jaipur', price: '₹33,000', days: '6 Days', badge: 'HERITAGE', color: '#d97706', img: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80' },
-              { id: 'kailash', name: 'Kailash Mansarovar', sub: 'Sacred Himalayan Pilgrimage', price: 'Contact Us', days: '15+ Days', badge: 'PREMIUM', color: '#7c3aed', img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80' },
+              { id: 'kailash', name: 'Kailash Mansarovar', sub: 'Sacred Himalayan Pilgrimage', price: '₹2,75,000', days: '15+ Days', badge: 'PREMIUM', color: '#7c3aed', img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80' },
               { id: 'kerala_group', name: 'Kerala Group Tour', sub: 'Kochi · Munnar · Alleppey · Kovalam', price: '₹6,999', days: '5 Days', badge: 'GROUP TOUR', color: '#059669', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80' },
               { id: 'kerala_honeymoon', name: 'Kerala Honeymoon', sub: 'Kochi · Munnar · Alleppey · Varkala', price: '₹25,999', days: '5 Days', badge: 'HONEYMOON', color: '#db2777', img: 'https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=600&q=80' },
               { id: 'goa', name: 'Goa Friends Package', sub: 'North Goa · South Goa · Beaches', price: '₹9,999', days: '4 Days', badge: 'FRIENDS TRIP', color: '#0284c7', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80' },
@@ -295,12 +261,8 @@ export default function Home() {
         const [lightboxIdx, setLightboxIdx] = useState(null)
         return (
           <section className="py-16" style={{ background: '#0a0f1e' }}>
-            {/* Lightbox */}
             {lightboxIdx !== null && (
-              <div
-                onClick={() => setLightboxIdx(null)}
-                style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.93)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              >
+              <div onClick={() => setLightboxIdx(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.93)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <button onClick={() => setLightboxIdx(null)} style={{ position: 'absolute', top: 20, right: 24, color: 'white', fontSize: 36, background: 'none', border: 'none', cursor: 'pointer', lineHeight: 1 }}>✕</button>
                 <button onClick={e => { e.stopPropagation(); setLightboxIdx((lightboxIdx - 1 + GALLERY_IMGS.length) % GALLERY_IMGS.length) }} style={{ position: 'absolute', left: 16, color: 'white', fontSize: 36, background: 'rgba(255,255,255,0.1)', border: 'none', cursor: 'pointer', borderRadius: 8, padding: '8px 14px' }}>‹</button>
                 <img src={GALLERY_IMGS[lightboxIdx]} alt="" onClick={e => e.stopPropagation()} style={{ maxWidth: '90vw', maxHeight: '88vh', borderRadius: 12, objectFit: 'contain', boxShadow: '0 8px 40px rgba(0,0,0,0.8)' }} />
@@ -314,16 +276,9 @@ export default function Home() {
                 <h2 className="text-3xl font-bold text-white mt-1">Our Travel Gallery</h2>
                 <p className="text-gray-400 mt-2 text-sm">Real moments from our journeys</p>
               </div>
-              <div
-                className="gallery-scroll"
-                style={{ display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 12, scrollbarWidth: 'thin', scrollbarColor: '#f97316 rgba(255,255,255,0.1)', WebkitOverflowScrolling: 'touch' }}
-              >
+              <div className="gallery-scroll" style={{ display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 12, scrollbarWidth: 'thin', scrollbarColor: '#f97316 rgba(255,255,255,0.1)', WebkitOverflowScrolling: 'touch' }}>
                 {GALLERY_IMGS.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Gallery ${i + 1}`}
-                    onClick={() => setLightboxIdx(i)}
+                  <img key={i} src={src} alt={`Gallery ${i + 1}`} onClick={() => setLightboxIdx(i)}
                     style={{ height: 240, width: 'auto', minWidth: 180, maxWidth: 320, objectFit: 'cover', borderRadius: 16, flexShrink: 0, border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', transition: 'transform 0.2s, box-shadow 0.2s' }}
                     onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(249,115,22,0.3)' }}
                     onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none' }}
@@ -335,11 +290,8 @@ export default function Home() {
         )
       })()}
 
-      {/* YouTube Customer Reviews */}
-      <section
-        className="py-16"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='60' viewBox='0 0 120 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 30 L5 8 L22 30 L5 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Cpath d='M60 30 L115 8 L98 30 L115 52 Z' fill='rgba(13,71,161,0.18)'/%3E%3Ccircle cx='60' cy='30' r='3' fill='rgba(13,71,161,0.12)'/%3E%3C/svg%3E")`, backgroundColor: '#0a0f1e', backgroundSize: '120px 60px' }}
-      >
+      {/* YouTube Reviews */}
+      <section className="py-16" style={{ backgroundColor: '#0a0f1e', backgroundImage: WINGS_PATTERN, backgroundSize: '120px 60px' }}>
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">⭐ Real Experiences</p>
@@ -351,19 +303,9 @@ export default function Home() {
               { url: 'https://www.youtube.com/embed/C81lBKIVtVQ', title: 'Customer Review 1' },
               { url: 'https://www.youtube.com/embed/a9E1YvR7B8s', title: 'Customer Review 2' },
             ].map((v, i) => (
-              <div
-                key={i}
-                className="w-full max-w-xs rounded-2xl overflow-hidden shadow-2xl"
-                style={{ border: '1px solid rgba(251,146,60,0.3)', background: 'rgba(255,255,255,0.04)' }}
-              >
+              <div key={i} className="w-full max-w-xs rounded-2xl overflow-hidden shadow-2xl" style={{ border: '1px solid rgba(251,146,60,0.3)', background: 'rgba(255,255,255,0.04)' }}>
                 <div style={{ position: 'relative', paddingBottom: '177.78%', height: 0 }}>
-                  <iframe
-                    src={v.url}
-                    title={v.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                  />
+                  <iframe src={v.url} title={v.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }} />
                 </div>
                 <div className="p-3 text-center">
                   <p className="text-orange-300 text-sm font-semibold">⭐⭐⭐⭐⭐ Verified Traveler</p>
@@ -374,76 +316,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Us — wings pattern on dark */}
-      <section
-        className="py-16"
-        style={{
-          backgroundImage: `${WINGS_PATTERN}`,
-          backgroundColor: '#0a0f1e',
-          backgroundSize: '120px 60px',
-        }}
-      >
+      {/* Why Us */}
+      <section className="py-16" style={{ backgroundImage: WINGS_PATTERN, backgroundColor: '#0a0f1e', backgroundSize: '120px 60px' }}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">✈️ Why Choose Us</p>
-            <h2 className="text-3xl font-bold text-white mt-1">Travel with Confidence</h2>
+            <h2 className="text-3xl font-bold text-white mt-1">Why Saravana Travels?</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: '🏆', title: 'Best Prices', desc: 'Unbeatable deals on all packages' },
-              { icon: '🛡️', title: 'Safe Travel', desc: 'Fully insured & verified operators' },
-              { icon: '📞', title: '24/7 Support', desc: 'Always here when you need us' },
-              { icon: '⭐', title: '5-Star Rated', desc: '500+ happy travelers trust us' },
-            ].map(item => (
-              <div
-                key={item.title}
-                className="text-center p-6 rounded-2xl transition-all hover:-translate-y-1"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
-              >
+              { icon: '🏆', title: '10+ Years', desc: 'Trusted travel experience' },
+              { icon: '😊', title: '500+ Clients', desc: 'Happy travelers served' },
+              { icon: '💰', title: 'Best Price', desc: 'Guaranteed lowest rates' },
+              { icon: '📞', title: '24/7 Support', desc: 'Always here for you' },
+            ].map((item, i) => (
+              <div key={i} className="text-center p-6 rounded-2xl" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="font-bold text-white">{item.title}</h3>
-                <p className="text-sm text-gray-400 mt-1">{item.desc}</p>
+                <h3 className="text-white font-bold text-lg">{item.title}</h3>
+                <p className="text-gray-400 text-sm mt-1">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials — Shiva bg with wings */}
-      <section
-        className="py-16"
-        style={{
-          backgroundImage: `${WINGS_PATTERN}, ${SHIVA_OVERLAY}`,
-          backgroundSize: '80px 40px, cover',
-          backgroundPosition: 'center, center',
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">Testimonials</p>
-            <h2 className="text-3xl font-bold text-white mt-1">What Our Travelers Say</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testimonials.map(t => (
-              <div
-                key={t.name}
-                className="rounded-2xl p-5 text-white"
-                style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.12)' }}
-              >
-                <div className="flex mb-2">
-                  {Array(t.rating).fill(0).map((_, i) => <span key={i} className="text-yellow-400">★</span>)}
-                </div>
-                <p className="text-sm text-gray-300 italic mb-4">"{t.text}"</p>
-                <div>
-                  <p className="font-semibold">{t.name}</p>
-                  <p className="text-xs text-orange-300">{t.location}</p>
-                </div>
-              </div>
-            ))}
+      {/* Footer CTA */}
+      <section className="py-16 text-center" style={{ background: 'linear-gradient(135deg, #0a0f1e 0%, #1a0a2e 100%)' }}>
+        <div className="max-w-2xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-white mb-4">Ready to Explore?</h2>
+          <p className="text-gray-300 mb-8">Contact us today and let us plan your perfect journey.</p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="https://wa.me/918838691200" target="_blank" rel="noreferrer" className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-2xl font-bold transition-all hover:scale-105">
+              💬 WhatsApp Us
+            </a>
+            <a href="tel:+919442855620" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-2xl font-bold transition-all hover:scale-105">
+              📞 Call Now
+            </a>
           </div>
         </div>
       </section>
-
     </div>
   )
 }
