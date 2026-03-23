@@ -305,17 +305,19 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-white mt-1">Happy Clients — Their Stories</h2>
             <p className="text-gray-400 mt-2 text-sm">Watch what our satisfied travelers say about us</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center">
             {[
               { url: 'https://www.youtube.com/embed/C81lBKIVtVQ', title: 'Customer Review 1' },
               { url: 'https://www.youtube.com/embed/a9E1YvR7B8s', title: 'Customer Review 2' },
+              { url: 'https://www.youtube.com/embed/MXcvxH2a3iw', title: 'Customer Review 3' },
+              { url: 'https://www.youtube.com/embed/JJP2ClykIv4', title: 'Customer Review 4' },
             ].map((v, i) => (
-              <div key={i} className="w-full max-w-xs rounded-2xl overflow-hidden shadow-2xl" style={{ border: '1px solid rgba(251,146,60,0.3)', background: 'rgba(255,255,255,0.04)' }}>
+              <div key={i} className="w-full rounded-2xl overflow-hidden shadow-2xl" style={{ maxWidth: 200, border: '1px solid rgba(251,146,60,0.3)', background: 'rgba(255,255,255,0.04)' }}>
                 <div style={{ position: 'relative', paddingBottom: '177.78%', height: 0 }}>
                   <iframe src={v.url} title={v.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }} />
                 </div>
-                <div className="p-3 text-center">
-                  <p className="text-orange-300 text-sm font-semibold">⭐⭐⭐⭐⭐ Verified Traveler</p>
+                <div className="p-2 text-center">
+                  <p className="text-orange-300 text-xs font-semibold">⭐⭐⭐⭐⭐ Verified Traveler</p>
                 </div>
               </div>
             ))}
