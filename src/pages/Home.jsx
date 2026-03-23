@@ -33,7 +33,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0" style={{ background: '#0a0f1e' }}>
-          <img src="/siva.png" alt="bg" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+          <img src="/siva.png" alt="bg" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }} />
           <div className="absolute inset-0" style={{ background: 'rgba(0,0,30,0.25)' }}></div>
         </div>
         <div className="text-center text-white px-4 max-w-5xl mx-auto relative z-10 pt-24 md:pt-0">
