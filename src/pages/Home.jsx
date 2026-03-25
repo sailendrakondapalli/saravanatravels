@@ -21,9 +21,9 @@ const CHARDHAM_BG = '/chardam.png'
 export default function Home() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
   useSEO({
-    title: 'Best Travel Agency in Coimbatore Tamil Nadu | Kasi Yatra, Kasi Tour, Temple Tours',
-    description: 'Best travel agency in Coimbatore, Tamil Nadu. Book Kasi Yatra, Kasi Tour, Chardham Yatra, Tirupati Darshan, Temple Tours, Kerala, Goa, Nepal packages. Call +91 9442855620.',
-    keywords: 'best travel agency coimbatore, tour travels coimbatore, kasi yatra coimbatore, kasi tour coimbatore, temple tours coimbatore, travel agency tamil nadu, chardham yatra coimbatore, tirupati darshan package coimbatore, kerala tour coimbatore, goa tour coimbatore',
+    title: 'Kasi Yatra Tour Package from Coimbatore & Chennai | Best Travel Agency Coimbatore',
+    description: 'Book Kasi Yatra tour package from Coimbatore and Chennai. Best travel agency in Coimbatore, Tamil Nadu for Kasi Tour, Chardham Yatra, Tirupati Darshan, Temple Tours, Kerala, Goa, Nepal. Call +91 9442855620.',
+    keywords: 'kasi yatra tour package coimbatore, kasi tour package from coimbatore, kasi yatra from chennai, kasi tour package from chennai, best travel agency coimbatore, tour travels coimbatore, temple tours coimbatore',
     url: 'https://www.saravanatravel.in/'
   })
   const navigate = useNavigate()
