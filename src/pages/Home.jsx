@@ -325,6 +325,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Social Reviews */}
+      <section className="py-14" style={{ backgroundColor: '#0a0f1e' }}>
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-orange-400 font-semibold text-sm uppercase tracking-widest">🌟 Reviews & Follow Us</p>
+            <h2 className="text-3xl font-bold text-white mt-1">See What Travelers Say</h2>
+            <p className="text-gray-400 mt-2 text-sm">Check our reviews on Google, follow us on Instagram & Facebook</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {/* Google Reviews */}
+            <a href="https://share.google/fL8Lug6fjv0P9ssER" target="_blank" rel="noreferrer"
+              className="flex flex-col items-center gap-3 p-6 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl"
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)' }}>
+              <div className="w-14 h-14 rounded-full flex items-center justify-center text-3xl" style={{ background: 'rgba(234,67,53,0.15)', border: '1px solid rgba(234,67,53,0.3)' }}>⭐</div>
+              <div className="text-center">
+                <p className="text-white font-bold text-base">Google Reviews</p>
+                <p className="text-gray-400 text-xs mt-1">Read our verified reviews on Google Maps</p>
+                <p className="text-yellow-400 text-sm mt-2 font-semibold">⭐⭐⭐⭐⭐ 5.0 Rating</p>
+              </div>
+              <span className="text-xs bg-red-600 text-white px-3 py-1 rounded-full font-semibold">View on Google →</span>
+            </a>
+
+            {/* Instagram */}
+            <a href="https://www.instagram.com/sara_vanatravels" target="_blank" rel="noreferrer"
+              className="flex flex-col items-center gap-3 p-6 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl"
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)' }}>
+              <div className="w-14 h-14 rounded-full flex items-center justify-center text-3xl" style={{ background: 'rgba(225,48,108,0.15)', border: '1px solid rgba(225,48,108,0.3)' }}>📸</div>
+              <div className="text-center">
+                <p className="text-white font-bold text-base">Instagram</p>
+                <p className="text-gray-400 text-xs mt-1">Follow us for travel reels & tour updates</p>
+                <p className="text-pink-400 text-sm mt-2 font-semibold">@sara_vanatravels</p>
+              </div>
+              <span className="text-xs px-3 py-1 rounded-full font-semibold text-white" style={{ background: 'linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)' }}>Follow on Instagram →</span>
+            </a>
+
+            {/* Facebook */}
+            <a href="https://www.facebook.com/share/178ffBZu82/" target="_blank" rel="noreferrer"
+              className="flex flex-col items-center gap-3 p-6 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl"
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)' }}>
+              <div className="w-14 h-14 rounded-full flex items-center justify-center text-3xl" style={{ background: 'rgba(24,119,242,0.15)', border: '1px solid rgba(24,119,242,0.3)' }}>👍</div>
+              <div className="text-center">
+                <p className="text-white font-bold text-base">Facebook</p>
+                <p className="text-gray-400 text-xs mt-1">Like our page for deals & travel stories</p>
+                <p className="text-blue-400 text-sm mt-2 font-semibold">Saravana Travels</p>
+              </div>
+              <span className="text-xs bg-blue-600 text-white px-3 py-1 rounded-full font-semibold">Follow on Facebook →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Why Us */}
       <section className="py-16" style={{ backgroundImage: WINGS_PATTERN, backgroundColor: '#0a0f1e', backgroundSize: '120px 60px' }}>
         <div className="max-w-7xl mx-auto px-4">
